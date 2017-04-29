@@ -53,7 +53,7 @@ class Avaliacao(models.Model):
 class Denuncia(models.Model):
     id = models.AutoField(primary_key=True)
     data = models.DateTimeField(auto_now_add=True)
-    usuario = models.ForeignKey(Usuario, related_name="Avaliacoes")
+    usuario = models.ForeignKey(Usuario, related_name="Denuncias")
     descricao = models.CharField(max_length=1024, blank=True, null=True)
     longitude = models.FloatField()
     latitude = models.FloatField()
@@ -64,3 +64,31 @@ class Denuncia(models.Model):
 
     def __unicode__(self):
         return str(self.foco.id)+"_"+str(self.usuario.id)+"_"+str(self.id)
+
+
+class FotoDenuncia(models.Model):
+    id = models.AutoField(primary_key=True)
+    caminho = models.CharField(max_length=1024, blank=True, null=True)
+    legenda = models.CharField(max_length=1024, blank=True, null=True)
+    denuncia = models.ForeignKey(Denuncia, related_name="Fotos")
+
+    class Meta:
+        verbose_name = "Foto de Denuncia"
+        verbose_name_plural = "Fotos de Denuncias"
+
+    def __unicode__(self):
+        return str(self.legenda)
+
+
+class FotoAvaliacao(models.Model):
+    id = models.AutoField(primary_key=True)
+    caminho = models.CharField(max_length=1024, blank=True, null=True)
+    legenda = models.CharField(max_length=1024, blank=True, null=True)
+    avaliacao = models.ForeignKey(Avaliacao, related_name="Fotos")
+
+    class Meta:
+        verbose_name = "Foto de Avaliação"
+        verbose_name_plural = "Fotos de Avaliações"
+
+    def __unicode__(self):
+        return str(self.legenda)

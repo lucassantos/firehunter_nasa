@@ -14,7 +14,7 @@ import re
 # Create your views here.
 class ServiceJson(View):
     @staticmethod
-    def Usuarios(request):
+    def usuarios(request):
         # Query Base
         query = Usuario.objects.all().order_by("nome")
 
@@ -38,7 +38,7 @@ class ServiceJson(View):
         lista = serialize('json', query, fields=["id", "nome", "email"])
         return HttpResponse(lista, content_type='application/json')
     @staticmethod
-    def Focos(request):
+    def focos(request):
         # Query Base
         query = Foco.objects.all()
 
@@ -66,7 +66,7 @@ class ServiceJson(View):
         lista = serialize('json', query, fields=["id", "longitude", "latitude", "satelite", "data_hora_gmt", "tipo"])
         return HttpResponse(lista, content_type='application/json')
     @staticmethod
-    def Avaliacoes(request):
+    def avaliacoes(request):
         # Query Base
         query = Avaliacao.objects.all().order_by("data")
 
@@ -96,7 +96,7 @@ class ServiceJson(View):
         lista = serialize('json', query, fields=["id", "data", "usuario__nome", "descricao", "existeFogo", "foco__id"])
         return HttpResponse(lista, content_type='application/json')
     @staticmethod
-    def Denuncias(request):
+    def denuncias(request):
         # Query Base
         query = Denuncia.objects.all().order_by("data")
         usuario_id = request.GET.get("usuario_id")
@@ -228,7 +228,7 @@ class ServiceJson(View):
         return HttpResponse(lista, content_type='application/json')
     @staticmethod
     @csrf_exempt
-    def savefotoDenuncia(request):
+    def savefotodenuncia(request):
         # Filtros
         id = request.POST.get("id")
         foto = request.POST.get("foto")
@@ -261,7 +261,7 @@ class ServiceJson(View):
         return HttpResponse(lista, content_type='application/json')
     @staticmethod
     @csrf_exempt
-    def savefotoAvaliacao(request):
+    def savefotoavaliacao(request):
         # Filtros
         id = request.POST.get("id")
         foto = request.POST.get("foto")

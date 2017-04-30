@@ -15,8 +15,26 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from core.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^js/usuarios', ServiceJson.usuarios, name='usuarios'),
+    url(r'^js/focos', ServiceJson.focos, name='focos'),
+    url(r'^js/avaliacoes', ServiceJson.avaliacoes, name='avaliacoes'),
+    url(r'^js/denuncias', ServiceJson.denuncias, name='denuncias'),
 
+    url(r'^js/saveusuario', ServiceJson.saveusuario, name='saveusuario'),
+    url(r'^js/savefoco', ServiceJson.savefoco, name='savefoco'),
+    url(r'^js/saveavaliacao', ServiceJson.saveavaliacao, name='saveavaliacao'),
+    url(r'^js/savedenuncia', ServiceJson.savedenuncia, name='savedenuncia'),
+    url(r'^js/savefotodenuncia', ServiceJson.savefotodenuncia, name='savefotodenuncia'),
+    url(r'^js/savefotodenuncia', ServiceJson.savefotodenuncia, name='savefotodenuncia'),
+
+    url(r'^js/excluirusuario', ServiceJson.excluirusuario, name='excluirusuario'),
+    url(r'^js/excluirfoco', ServiceJson.excluirfoco, name='excluirfoco'),
+    url(r'^js/excluiravaliacao', ServiceJson.excluiravaliacao, name='excluiravaliacao'),
+    url(r'^js/excluirdenuncia', ServiceJson.excluirdenuncia, name='excluirdenuncia'),
+    url(r'^js/excluirfotodenuncia', ServiceJson.excluirfotodenuncia, name='excluirfotodenuncia'),
+    url(r'^js/excluirfotoavaliacao', ServiceJson.excluirfotoavaliacao, name='excluirfotoavaliacao'),
 ]
